@@ -59,7 +59,7 @@ export const Scene1Compatibility: React.FC<Props> = ({ onComplete }) => {
 
     useEffect(() => {
         if (phase === 'perfect') {
-            const timer = setTimeout(() => setPhase('warning'), 3500);
+            const timer = setTimeout(() => setPhase('warning'), 2000);
             return () => clearTimeout(timer);
         }
     }, [phase]);

@@ -15,7 +15,7 @@ export const Scene3Future: React.FC<Props> = () => {
 
     useEffect(() => {
         if (phase === 'paperFolding') {
-            const timer = setTimeout(() => setPhase('proposal'), 1000); // Wait for paper to fold
+            const timer = setTimeout(() => setPhase('proposal'), 400); // Faster fold
             return () => clearTimeout(timer);
         }
     }, [phase]);
@@ -32,8 +32,8 @@ export const Scene3Future: React.FC<Props> = () => {
         }));
         setCandles(newCandles as any);
 
-        // Transition from candles to paper - slower for cinematic effect
-        const timer = setTimeout(() => setPhase('paperUnfolding'), 6000);
+        // Transition from candles to paper - snappier but still cinematic
+        const timer = setTimeout(() => setPhase('paperUnfolding'), 3000);
         return () => clearTimeout(timer);
     }, [phase]);
 
@@ -284,8 +284,8 @@ Will you make me the happiest person alive and be my wife?`;
                         >
                             <Typewriter
                                 text={paperText}
-                                speed={50}
-                                onComplete={() => setTimeout(() => setPhase('paperFolding'), 1500)}
+                                speed={25}
+                                onComplete={() => setTimeout(() => setPhase('paperFolding'), 500)}
                             />
                         </motion.div>
                     </motion.div>
@@ -352,7 +352,7 @@ Will you make me the happiest person alive and be my wife?`;
                         <motion.h2
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3, duration: 0.8 }}
+                            transition={{ delay: 0.1, duration: 0.5 }}
                             className="text-4xl md:text-7xl font-serif text-white mb-12 md:mb-20 leading-relaxed drop-shadow-2xl text-glow italic px-4"
                         >
                             Your answer? 💍
@@ -362,7 +362,7 @@ Will you make me the happiest person alive and be my wife?`;
                             <motion.button
                                 initial={{ opacity: 0, scale: 0.5 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
+                                transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
                                 onClick={() => setPhase('yes')}
                                 className="px-16 py-6 bg-gradient-to-r from-amber-500 via-rose-500 to-rose-700 rounded-full font-bold text-2xl md:text-4xl text-white shadow-[0_0_50px_rgba(225,29,72,0.9)] hover:shadow-[0_0_80px_rgba(253,224,71,0.8)] hover:-translate-y-3 transition-all animate-glow-pulse border border-yellow-300/50 w-full sm:w-auto"
                             >
@@ -371,7 +371,7 @@ Will you make me the happiest person alive and be my wife?`;
                             <motion.button
                                 initial={{ opacity: 0, scale: 0.5 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 1, type: "spring", stiffness: 200 }}
+                                transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
                                 onClick={() => setPhase('no')}
                                 className="px-16 py-6 bg-black/50 border-2 border-crimson-900/60 text-rose-300 font-bold rounded-full hover:bg-crimson-950/80 hover:text-white transition-all text-2xl md:text-4xl backdrop-blur-md w-full sm:w-auto"
                             >
